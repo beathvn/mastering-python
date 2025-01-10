@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "mastering-python"
+version = "0.0.1"
+description = "A project to demonstrate some of the best practices in python"
+authors = ["Lukas Ellemunt"]
+readme = "Readme.md"
+package-mode = false # using poetry only for dependency management...
+
+[tool.poetry.dependencies]
+python = "^3.12"
+ipykernel = "^6.29.5"
+
+[tool.poetry.group.dev.dependencies]
+numpy = "^2.2.1"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

@@ -1,0 +1,25 @@
+{
+    "name": "Python 3",
+    "image": "mcr.microsoft.com/devcontainers/python:3.12",
+    "customizations": {
+        "vscode": {
+            "settings": {
+                "python.defaultInterpreterPath": "./.venv/bin/python",
+                "python.linting.enabled": true,
+                "python.linting.pylintEnabled": true,
+                "python.formatting.autopep8Path": "/usr/local/py-utils/bin/autopep8"
+            },
+            "extensions": [
+                "github.copilot",
+                "github.copilot-chat",
+                "mhutchie.git-graph",
+                "eamodio.gitlens",
+                "tamasfe.even-better-toml",
+                "ms-toolsai.jupyter", 
+                "gruntfuggly.todo-tree"
+            ]
+        }
+    },
+    "postCreateCommand": "bash ./.devcontainer/post-create.sh",
+    "remoteUser": "vscode"
+}
