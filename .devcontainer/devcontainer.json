@@ -1,25 +1,49 @@
-{
+{ // https://github.com/devcontainers/images/tree/main/src/python/.devcontainer
     "name": "Python 3",
-    "image": "mcr.microsoft.com/devcontainers/python:3.12",
+    "build": {
+        "dockerfile": "./Dockerfile",
+        "context": "."
+    },
+    "features": {
+        "ghcr.io/devcontainers/features/common-utils:2": { // https://github.com/devcontainers/features/tree/main/src/common-utils
+            "installZsh": "true",
+            "username": "vscode",
+            "userUid": "1000",
+            "userGid": "1000",
+            "upgradePackages": "true"
+        },
+        "ghcr.io/devcontainers/features/git:1": { // https://github.com/devcontainers/features/tree/main/src/git
+            "version": "latest",
+            "ppa": "false"
+        }
+    },
     "customizations": {
         "vscode": {
             "settings": {
+                "files.exclude": {
+                    "**/.git": false
+                },
                 "python.defaultInterpreterPath": "./.venv/bin/python",
                 "python.linting.enabled": true,
                 "python.linting.pylintEnabled": true,
-                "python.formatting.autopep8Path": "/usr/local/py-utils/bin/autopep8"
+                "[python]": {
+                    "editor.defaultFormatter": "ms-python.black-formatter",
+                    "editor.formatOnSave": true
+                }
             },
             "extensions": [
+                "ms-python.python",
+                "ms-python.black-formatter",
                 "github.copilot",
                 "github.copilot-chat",
                 "mhutchie.git-graph",
                 "eamodio.gitlens",
                 "tamasfe.even-better-toml",
-                "ms-toolsai.jupyter", 
+                "ms-toolsai.jupyter",
                 "gruntfuggly.todo-tree"
             ]
         }
     },
-    "postCreateCommand": "bash ./.devcontainer/post-create.sh",
-    "remoteUser": "vscode"
+    "remoteUser": "vscode",
+    "postCreateCommand": "bash ./.devcontainer/post-create.sh"
 }
