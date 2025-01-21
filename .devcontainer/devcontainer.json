@@ -16,6 +16,7 @@
             "version": "latest",
             "ppa": "false"
         }
+        // "ghcr.io/devcontainers/features/terraform:1": {} // https://github.com/devcontainers/features/tree/main/src/terraform
     },
     "customizations": {
         "vscode": {

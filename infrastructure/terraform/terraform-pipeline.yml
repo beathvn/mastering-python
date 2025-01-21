@@ -1,0 +1,27 @@
+trigger:
+  branches:
+    include:
+      - main
+  paths:
+    include:
+      - infrastructure/terraform
+
+resources:
+  repositories:
+  - repository: pipelines
+    type: git
+    name: Hti.Devops # this must be a repository in the same organization
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+
+- checkout: self
+  path: 's' # equals to $(System.DefaultWorkingDirectory)
+  fetchDepth: 1
+
+- template: templates/publish-terraform-v1.yml@pipelines
+  parameters:
+    pathTerraform: "$(System.DefaultWorkingDirectory)/infrastructure/terraform"
+    pathTerraformTemplates: '$(Pipeline.Workspace)/terraform'
