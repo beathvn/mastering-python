@@ -25,3 +25,21 @@ To control the version that is installed you can use:
 
 ## Git pre-commits
 Define some hooks, that should run before you commit anything. In this file [.pre-commit-config.yaml](./.pre-commit-config.yaml), you define the pre-commit hooks that should run, and with `pre-commit install` you install them.
+
+## Terraform
+### Working locally with terraform
+This guide will show you, how to setup the terraform backend to work with terraform statefiles in an Azure Storage Account.
+1. Make sure your user has the following permissions:
+    1. ...
+2. set the following environment variables (you could simply define them in a .env file and load that file with `set +a` and `source .env`):
+    ```shell
+    ARM_USE_AZUREAD=true
+    ARM_USE_OIDC=false
+    ARM_SUBSCRIPTION_ID=YOUR_SUBSCRIPTION_ID
+    ARM_TENANT_ID=YOUR_TENANT_ID
+    ```
+3. Run the following `$ terraform init \
+    -backend-config="resource_group_name=YOUR_RESOURCE_GROUP_NAME" \
+    -backend-config="storage_account_name=YOUR_STORAGE_ACCOUNT_NAME" \
+    -backend-config="container_name=YOUR_CONTAINER_NAME" \
+    -backend-config="key=YOUR_BLOB_NAME.tfstate"`
