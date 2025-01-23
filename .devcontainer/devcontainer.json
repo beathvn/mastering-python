@@ -16,7 +16,11 @@
             "version": "latest",
             "ppa": "false"
         }
-        // "ghcr.io/devcontainers/features/terraform:1": {} // https://github.com/devcontainers/features/tree/main/src/terraform
+        // "ghcr.io/devcontainers/features/terraform:1": {} // this is needed for terraform
+        // "ghcr.io/devcontainers/features/azure-cli:1": {} // you also need azure cli for local terraform
+        // "ghcr.io/devcontainers-extra/features/checkov:1": {}, // these are needed for the pre-commit hooks
+        // "ghcr.io/dhoeric/features/trivy:1": {},
+        // "ghcr.io/dhoeric/features/terraform-docs:1": {}
     },
     "customizations": {
         "vscode": {

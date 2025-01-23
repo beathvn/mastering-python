@@ -1,6 +1,7 @@
 import sys
 import unittest
 
+
 class SkipTestExample(unittest.TestCase):
     @unittest.skip("Unconditionally skipped test")
     def test_unimportant(self):
@@ -17,6 +18,7 @@ class SkipTestExample(unittest.TestCase):
         from ctypes import WinDLL, windll
 
         self.assertIsInstance(windll.kernel32, WinDLL)
+
 
 if __name__ == "__main__":
     unittest.main(verbosity=2)

@@ -8,6 +8,7 @@ import unittest
 
 from stack import Stack
 
+
 class TestStack(unittest.TestCase):
     def setUp(self):
         self.stack = Stack()
@@ -42,6 +43,7 @@ class TestStack(unittest.TestCase):
             self.stack.push(item)
         reversed_stack = reversed(self.stack)
         self.assertEqual(list(reversed_stack), [7, 6, 5])
+
 
 if __name__ == "__main__":
     unittest.main(verbosity=2)

@@ -26,19 +26,20 @@ To control the version that is installed you can use:
 ## Git pre-commits
 Define some hooks, that should run before you commit anything. In this file [.pre-commit-config.yaml](./.pre-commit-config.yaml), you define the pre-commit hooks that should run, and with `pre-commit install` you install them.
 
+To test the pre-commit hooks, you can use `pre-commit run --all-files`
+
+For local scripts, you need to make sure, they are executable (otherwise you will get an error telling you they are not executable). You can do this with `chmod +x <scriptname>`
+
 ## Terraform
 ### Working locally with terraform
-This guide will show you, how to setup the terraform backend to work with terraform statefiles in an Azure Storage Account.
-1. Make sure your user has the following permissions:
-    1. ...
-2. set the following environment variables (you could simply define them in a .env file and load that file with `set +a` and `source .env`):
+This guide (got from these [docs](https://developer.hashicorp.com/terraform/language/backend/azurerm)) will show you, how to setup the terraform backend to work with terraform statefiles in an Azure Storage Account.
+1. `az login` with the user you want to use for terraform. Use `az account show` to see the current account.
+2. Make sure your user has the following permissions on the storage account: `Storage Blob Data Owner` or `Container Blob Data Owner`
+3. set the following environment variables (you could simply define them in a `.env` file and load that file with `set -a` and `source .env`):
     ```shell
     ARM_USE_AZUREAD=true
-    ARM_USE_OIDC=false
-    ARM_SUBSCRIPTION_ID=YOUR_SUBSCRIPTION_ID
-    ARM_TENANT_ID=YOUR_TENANT_ID
     ```
-3. Run the following `$ terraform init \
+4. Run the following `$ terraform init \
     -backend-config="resource_group_name=YOUR_RESOURCE_GROUP_NAME" \
     -backend-config="storage_account_name=YOUR_STORAGE_ACCOUNT_NAME" \
     -backend-config="container_name=YOUR_CONTAINER_NAME" \

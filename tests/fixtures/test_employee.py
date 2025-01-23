@@ -11,6 +11,7 @@ Jane,35,Manager,80000
 John,40,CEO,100000
 """
 
+
 class TestFromCsvFile(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
@@ -43,6 +44,7 @@ class TestFromCsvFile(unittest.TestCase):
         self.assertEqual(self.employees[1].name, "Bob")
         self.assertEqual(self.employees[2].name, "Jane")
         self.assertEqual(self.employees[3].name, "John")
+
 
 if __name__ == "__main__":
     unittest.main(verbosity=2)

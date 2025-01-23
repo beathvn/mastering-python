@@ -10,3 +10,28 @@ repos:
     rev: 24.10.0
     hooks:
     -   id: black
+# -   repo: local
+#     hooks:
+#     -   id: check-tfvars
+#         name: Check terraform.tfvars
+#         entry: scripts/check_tfvars.py
+#         language: python
+#         files: infrastructure/terraform/terraform.tfvars
+# - repo: https://github.com/antonbabenko/pre-commit-terraform
+#   rev: v1.97.0
+#   hooks:
+#     - id: terraform_fmt
+#     - id: terraform_trivy
+#     - id: terraform_docs # https://github.com/antonbabenko/pre-commit-terraform?tab=readme-ov-file#terraform_docs
+#       args:
+#         - --hook-config=--path-to-file=../TFDOC.md
+#         - --hook-config=--create-file-if-not-exist=true
+#         - --hook-config=--add-to-existing-file=true
+#         - --hook-config=--use-standard-markers=true
+#         - --hook-config=--custom-marker-begin=<!-- BEGIN_TF_DOCS -->
+#         - --hook-config=--custom-marker-end=<!-- END_TF_DOCS -->
+#         - --hook-config=--custom-doc-header="# "
+# - repo: https://github.com/bridgecrewio/checkov.git
+#   rev: '3.2.356'
+#   hooks:
+#     - id: checkov

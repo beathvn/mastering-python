@@ -2,6 +2,7 @@ import unittest
 
 from prime_v2 import is_prime
 
+
 class TestIsPrime(unittest.TestCase):
     def test_prime_number(self):
         self.assertTrue(is_prime(17))
@@ -26,6 +27,7 @@ class TestIsPrime(unittest.TestCase):
     def test_negative_number(self):
         with self.assertRaises(ValueError):
             is_prime(-1)
+
 
 if __name__ == "__main__":
     unittest.main(verbosity=2)

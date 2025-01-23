@@ -2,6 +2,7 @@
 
 import csv
 
+
 class Employee:
     __slots__ = ["name", "age", "job", "salary"]
 
@@ -15,6 +16,7 @@ class Employee:
         for attr in self.__slots__:
             print(f"{attr.capitalize()}: {getattr(self, attr)}")
         print()
+
 
 def from_csv_file(file_path):
     with open(file_path) as file:

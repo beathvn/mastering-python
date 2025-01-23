@@ -13,6 +13,7 @@ from calculations import (
     subtract,
 )
 
+
 class TestArithmeticOperations(unittest.TestCase):
     def test_add(self):
         self.assertEqual(add(10, 5), 15)
@@ -31,6 +32,7 @@ class TestArithmeticOperations(unittest.TestCase):
         self.assertEqual(divide(-1, 1), -1)
         with self.assertRaises(ZeroDivisionError):
             divide(10, 0)
+
 
 class TestStatisticalOperations(unittest.TestCase):
     def test_mean(self):
@@ -61,12 +63,14 @@ def make_suite():
     ]
     return unittest.TestSuite(tests=arithmetic_tests)
 
+
 def load_tests(loader, standard_tests, pattern):
     # make_suite can be cumbersome to maintain
     suite = unittest.TestSuite()
     suite.addTests(loader.loadTestsFromTestCase(TestArithmeticOperations))
     suite.addTests(loader.loadTestsFromTestCase(TestStatisticalOperations))
     return suite
+
 
 if __name__ == "__main__":
     suite = make_suite()

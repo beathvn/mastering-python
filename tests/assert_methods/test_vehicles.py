@@ -2,6 +2,7 @@ import unittest
 
 import tests.assert_methods.vehicles as vehicles
 
+
 class TestVehicles(unittest.TestCase):
     def test_vehicle_is_instance_of_car(self):
         car = vehicles.Car("Chevrolet", "Corvette", 194)
@@ -19,6 +20,7 @@ class TestVehicles(unittest.TestCase):
             max_speed=180,
         )
         self.assertIsInstance(car, vehicles.Vehicle)
+
 
 if __name__ == "__main__":
     unittest.main(verbosity=2)

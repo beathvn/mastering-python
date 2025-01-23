@@ -2,6 +2,7 @@
 
 import unittest
 
+
 class TestCollections(unittest.TestCase):
     def test_sequence_objects(self):
         a = ("H", "e", "l", "l", "o")
@@ -11,7 +12,7 @@ class TestCollections(unittest.TestCase):
     def test_string_objects(self):
         a = "Hello"
         b = "Hello"
-        self. assertMultiLineEqual(a, b)
+        self.assertMultiLineEqual(a, b)
 
     def test_list_objects(self):
         a = [1, 2, 3, 4, 5]
@@ -32,6 +33,7 @@ class TestCollections(unittest.TestCase):
         a = {1, 2, 4, 3, 5}
         b = {1, 5, 3, 4, 2}
         self.assertSetEqual(a, b)
+
 
 if __name__ == "__main__":
     unittest.main(verbosity=2)
