@@ -4,6 +4,8 @@
         "dockerfile": "./Dockerfile",
         "context": "."
     },
+    "workspaceMount": "source=${localWorkspaceFolder},target=/workspace/mastering-python,type=bind,consistency=cached",
+    "workspaceFolder": "/workspace/mastering-python",
     "features": {
         "ghcr.io/devcontainers/features/common-utils:2": { // https://github.com/devcontainers/features/tree/main/src/common-utils
             "installZsh": "true",
