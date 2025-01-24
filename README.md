@@ -2,6 +2,16 @@
 
 collecting useful information
 
+## Dev Container
+Lets you run your development environment in a container. This is useful, if you want to have a consistent environment across different machines.
+If you want to install something new into your dev environment (not a simple dependency, but something more on system level) there are 2 ways to do it:
+* with the Dockerfile
+* with the devcontainer.json using features (this is more simple and recommended for things that you just need for development and not production). see here for the [available feature](https://containers.dev/features). These can be configured and don't need to be maintained by you. It is also possible that some vs code extensions are installed with a feature.
+
+
+### Troubleshooting
+* If you get the error, that you cannot edit or create files, once opened in the dev container, the problem could be that you have configured the environment from where you start it to use a root user. In the dev container configuration it defines a non-root user called vscode to be used in the container. You can remove all of that (not recommended, as it is best practice to use a non-root user in the container) to load the container as root user.
+
 ## Poetry
 This lets you easily manage dependencies in python.
 
