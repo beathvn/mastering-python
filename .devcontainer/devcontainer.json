@@ -6,7 +6,7 @@
     },
     "features": {
         "ghcr.io/devcontainers/features/common-utils:2": { // https://github.com/devcontainers/features/tree/main/src/common-utils
-            "installZsh": "true",
+            "installZsh": "true", // by default, zsh is installed, also oh-my-zsh
             "username": "vscode",
             "userUid": "1000",
             "userGid": "1000",
