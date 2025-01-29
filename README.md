@@ -54,3 +54,18 @@ This guide (got from these [docs](https://developer.hashicorp.com/terraform/lang
     -backend-config="storage_account_name=YOUR_STORAGE_ACCOUNT_NAME" \
     -backend-config="container_name=YOUR_CONTAINER_NAME" \
     -backend-config="key=YOUR_BLOB_NAME.tfstate"`
+
+## Docker
+If you build a lot of docker images you need to make sure that you clean them also. Here are some useful commands
+* `docker system df`: lets you see how much space is used by images, containers and volumes
+* `docker images`: shows all images
+* `docker rmi IMAGE_ID`: removes the image with the given id
+* `docker image prune`: removes all dangling images
+* `docker builder prune`: removes the build cache of all images
+* `docker builder prune --all`: removes all the build cache, even the ones that are still used by images
+* `docker builder prune --filter until=24h`: removes build cache older than 24 hours
+
+## Terminal
+Using oh-my-zsh to use the different plugins. These are some useful plugins. You need to clone the repo with the provided command and then add it to the `.zshrc` file. To do this use `vi ~/.zshrc`. Hit `i` to enter insert mode. Add the plugin to the plugins array (space separated list). Hit `esc` to leave insert mode. Type `:wq` to save and quit. After that restart the terminal.
+* **zsh-autosuggestions**: suggests commands based on your history. cmd: `git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions`. This plugin takes suggestions also from the `~/.zsh_history` file.
+* **zsh-syntax-highlighting**: highlights the command you are typing. cmd: `git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting`

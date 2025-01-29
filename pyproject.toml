@@ -8,15 +8,15 @@ package-mode = false # using poetry only for dependency management...
 
 [tool.poetry.dependencies]
 python = "^3.12"
-ipykernel = "^6.29.5"
 python-dotenv = "^1.0.1"
-pre-commit = "^4.0.1"
 
 [tool.poetry.group.dev]
 optional = false # this is the default value
 
 [tool.poetry.group.dev.dependencies]
 numpy = "^2.2.1"
+ipykernel = "^6.29.5"
+pre-commit = "^4.0.1"
 
 [build-system]
 requires = ["poetry-core"]
