@@ -2,6 +2,20 @@
 
 collecting useful information
 
+## WSL
+If you want to run dev-container on windows, you need a docker engine. Docker desktop is the easiest way, but for industries of a certain size, you cannot use it. So your best option is to install wsl and use the docker cli (which is free).
+If you choose Ubuntu as your distribution that runs on top of WSL2, regularly check the size of the App ubuntu in windows, because it can grow really large (up to a point where the C: drive is completly full!). To shrink the size of the Ubuntu app follow these steps:
+* cleanup in wsl itself. Follow this:
+    * if using docker, check the docker section below on how to clean that.
+    * `du -a FOLDERPATH | sort -n -r | head -n 5` to list the top 5 folders taking up space
+    * shutdown wsl
+    * open up powershell as admin and execute this command `Optimize-VHD -Path "C:\Users\<username>\AppData\Local\Packages\...\LocalState\ext4.vhdx" -Mode Full` (it can be that it fails, because it is used by another process... just wait a bit)
+
+Useful commands
+* `wsl --list --verbose`: lists the available distributions
+* `wsl --shutdown`
+
+
 ## Dev Container
 Lets you run your development environment in a container. This is useful, if you want to have a consistent environment across different machines.
 If you want to install something new into your dev environment (not a simple dependency, but something more on system level) there are 2 ways to do it:
@@ -21,7 +35,9 @@ Here are some useful commands:
     * `poetry add pytest` to install pytest and add that to the pyproject.toml file.
     * `poetry add --group dev pytest` to add it to the dev dependencies
     * `poetry add local-hosted-package --source privatesource` to add a package from privatesource. This needs to be setup.
+    * `poetry add --editable ./path/to/lib` to add a package in editable mode - changed are reflected instatly.
 * `poetry remove pytest` removes that dependency (and all its dependencies!)
+* `poetry update pytest` updates the package to the latest version
 * **poetry install**
     * `poetry install` installs all the dependencies from the [pyproject.toml](./pyproject.toml), including the ones within eventual subgroups (if they are not optional). Use the `--with` flag, to include the optional dependencies (by providing the name).
     * `poetry install --no-root` the current project is NOT installed in editable mode (which is default). This affects a single execution of poetry install. `package-mode = false` in [pyproject.toml](./pyproject.toml) is a project-wide setting that changes Poetry's behavior for all relevant commands (also the `poetry install` command)
@@ -62,14 +78,19 @@ This guide (got from these [docs](https://developer.hashicorp.com/terraform/lang
 
 ## Docker
 If you build a lot of docker images you need to make sure that you clean them also. Here are some useful commands
-* `docker system df`: lets you see how much space is used by images, containers and volumes
-* `docker images`: shows all images
-* `docker rmi IMAGE_ID`: removes the image with the given id
-* `docker rm CONTAINER_ID`: removes the container with the given id
-* `docker image prune`: removes all dangling images
-* `docker builder prune`: removes the build cache of all images
-* `docker builder prune --all`: removes all the build cache, even the ones that are still used by images
-* `docker builder prune --filter until=24h`: removes build cache older than 24 hours
+* **free up space**
+    * `docker system df`: lets you see how much space is used by images, containers and volumes
+    * `docker system prune -a`: removes all images, containers and volumes that are not used
+    * `docker images`: shows all images
+    * `docker rmi IMAGE_ID`: removes the image with the given id
+    * `docker rm CONTAINER_ID`: removes the container with the given id
+    * `docker image prune`: removes all dangling images
+    * `docker builder prune`: removes the build cache of all images
+        * `docker builder prune --all`: removes all the build cache, even the ones that are still used by images
+        * `docker builder prune --filter until=24h`: removes build cache older than 24 hours
+    * **docker volumes** this is also used by docker-in-docker
+        * `docker volume ls`: lists the volumes
+        * `docker volume rm VOLUME_NAME`: removes the volume
 
 ## Terminal
 Using oh-my-zsh to use the different plugins. These are some useful plugins. You need to clone the repo with the provided command and then add it to the `.zshrc` file. To do this use `nano ~/.zshrc`.

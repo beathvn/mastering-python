@@ -26,4 +26,4 @@ for plugin in $plugins; do
 done
 
 echo "Setting ZSH_THEME"
-sed -i 's/^ZSH_THEME=.*/ZSH_THEME="lukerandall"/' ~/.zshrc
+sed -i 's/^ZSH_THEME=.*/ZSH_THEME="steeef"/' ~/.zshrc
