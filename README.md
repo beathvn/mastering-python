@@ -34,7 +34,8 @@ Here are some useful commands:
 * **poetry add**
     * `poetry add pytest` to install pytest and add that to the pyproject.toml file.
     * `poetry add --group dev pytest` to add it to the dev dependencies
-    * `poetry add local-hosted-package --source privatesource` to add a package from privatesource. This needs to be setup.
+    * `poetry source add --priority=explicit privatesource https://pkgs.dev.azure.com/<ORG>/<PROJECT>/_packaging/privatly-hosted-package/pypi/simple/`. Sets up privatesource as a source for packages. See here for [docu](https://python-poetry.org/docs/repositories/). Using Azure-DevOps Artifacts in this case.
+    * `poetry add privatly-hosted-package --source privatesource` to add a package from privatesource. privatesource needs to be setup prior to this.
     * `poetry add --editable ./path/to/lib` to add a package in editable mode - changed are reflected instatly.
 * `poetry remove pytest` removes that dependency (and all its dependencies!)
 * `poetry update pytest` updates the package to the latest version
