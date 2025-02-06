@@ -15,6 +15,11 @@ Useful commands
 * `wsl --list --verbose`: lists the available distributions
 * `wsl --shutdown`
 
+## MacOS docker daemon - colima
+Colima gives you a docker daemon (needed for dev container) on the mac. You can install it with brew. Use the following commands:
+* `colima start`: starts the daemon (with default settings)
+* `colima start --cpus 4 --memory 8`: starts the daemon with 4 cpus and 8gb of memory
+* `colima stop`: stops the daemon
 
 ## Dev Container
 Lets you run your development environment in a container. This is useful, if you want to have a consistent environment across different machines.
