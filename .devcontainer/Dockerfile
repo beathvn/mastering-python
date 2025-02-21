@@ -1,5 +1,6 @@
 # https://github.com/devcontainers/images/tree/main/src/python/.devcontainer
-FROM python:3.12-bullseye
+ARG VARIANT=3.12-bullseye
+FROM python:${VARIANT}
 
 RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
     # Remove imagemagick due to https://security-tracker.debian.org/tracker/CVE-2019-10131
