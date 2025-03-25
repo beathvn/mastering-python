@@ -3,7 +3,7 @@ name = "mastering-python"
 version = "0.0.1"
 description = "A project to demonstrate some of the best practices in python"
 authors = ["Lukas Ellemunt"]
-readme = "Readme.md"
+readme = "README.md"
 package-mode = false # using poetry only for dependency management...
 
 [tool.poetry.dependencies]

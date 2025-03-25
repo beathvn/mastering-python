@@ -73,7 +73,8 @@
                 "tamasfe.even-better-toml",
                 "ms-toolsai.jupyter",
                 "gruntfuggly.todo-tree",
-                "davidanson.vscode-markdownlint"
+                "davidanson.vscode-markdownlint",
+                "yzhang.markdown-all-in-one"
             ]
         }
     },
