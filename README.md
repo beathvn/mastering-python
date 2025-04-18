@@ -9,6 +9,7 @@ collecting useful information
     - [Troubleshooting](#troubleshooting)
   - [Poetry](#poetry)
     - [Useful commands](#useful-commands)
+  - [uv](#uv)
     - [Versions](#versions)
   - [Git pre-commits](#git-pre-commits)
   - [Terraform](#terraform)
@@ -77,6 +78,29 @@ Here are some useful commands:
   - `poetry show` gives an overall look of your dependencies in the environment.
   - `poetry show requests` shows the version of the package.
   - `poetry show --tree` to show the whole dependency tree.
+
+## uv
+
+let's you also manage dependencies like poetry but is faster. Read the [docs](https://docs.astral.sh/uv/).
+
+Useful commands for a single script:
+
+- **python versions**
+  - `uv python list` lists all available python versions and shows which ones are installed
+  - `uv python install 3.11` installs the given version
+- **run scripts**
+  - `uv run script.py` runs the script with default python version
+  - `uv run --python 3.11 script.py` runs the script with the given python version
+  - `uv run --python 3.11 --with numpy script.py` runs the script with the given python version and the given dependency. Add more dependencies with `--with` flag.
+  - `uv init --script script.py --python 3.11` adds a comment to the script, that shows which python version are needed to run the script
+  - `uv add --script script.py "numpy"` adds the dependency to the script (in the comments that where been added on top of the script)
+- **with python projects**
+  - `uv init` init git repo, creates a bunch of files
+  - `uv add numpy` adds the dependency to the project (creates also a .venv folder in the project for the first extra dependency added)
+  - `uv remove numpy` removes the dependency from the project
+  - `uv run main.py` equivalent to the script part
+  - `uv sync` syncs the dependencies with the virtual environment - this automatically runs before `uv run` command
+  - `uv lock` creates lock files
 
 ### Versions
 
