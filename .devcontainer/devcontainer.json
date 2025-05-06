@@ -4,11 +4,12 @@
         "dockerfile": "./Dockerfile",
         "context": ".",
         "args": {
-            "VARIANT": "3.12-bullseye"
+            "VARIANT": "3.11-bullseye"
         }
     },
     "runArgs": [
         "--network=host"
+        // "-v", "/var/run/docker.sock:/var/run/docker.sock" // to connect to the local docker daemon
     ],
     "features": {
         "ghcr.io/devcontainers/features/common-utils:2": { // https://github.com/devcontainers/features/tree/main/src/common-utils

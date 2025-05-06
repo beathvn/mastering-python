@@ -1,8 +1,9 @@
-pip install poetry
-poetry config virtualenvs.in-project true
-poetry install
-source .venv/bin/activate
-pre-commit install
+# install uv
+curl -LsSf https://astral.sh/uv/install.sh | sh
+
+# optionally: install dependencies and pre-commit hooks
+# uv sync
+# pre-commit install
 
 # Tool for inspecting docker images https://github.com/wagoodman/dive (make sure to run this in bash)
 # DIVE_VERSION=$(curl -sL "https://api.github.com/repos/wagoodman/dive/releases/latest" | grep '"tag_name":' | sed -E 's/.*"v([^"]+)".*/\1/')

@@ -1,23 +1,11 @@
-[tool.poetry]
+[project]
 name = "mastering-python"
-version = "0.0.1"
+version = "0.1.0"
 description = "A project to demonstrate some of the best practices in python"
-authors = ["Lukas Ellemunt"]
 readme = "README.md"
-package-mode = false # using poetry only for dependency management...
-
-[tool.poetry.dependencies]
-python = "^3.12"
-python-dotenv = "^1.0.1"
-
-[tool.poetry.group.dev]
-optional = false # this is the default value
-
-[tool.poetry.group.dev.dependencies]
-numpy = "^2.2.1"
-ipykernel = "^6.29.5"
-pre-commit = "^4.0.1"
-
-[build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
+requires-python = ">=3.11"
+dependencies = [
+    "ipykernel>=6.29.5",
+    "numpy>=2.2.5",
+    "pre-commit>=4.2.0",
+]

@@ -9,8 +9,8 @@ collecting useful information
     - [Troubleshooting](#troubleshooting)
   - [Poetry](#poetry)
     - [Useful commands](#useful-commands)
-  - [uv](#uv)
     - [Versions](#versions)
+  - [uv](#uv)
   - [Git pre-commits](#git-pre-commits)
   - [Terraform](#terraform)
     - [Working locally with terraform](#working-locally-with-terraform)
@@ -79,6 +79,15 @@ Here are some useful commands:
   - `poetry show requests` shows the version of the package.
   - `poetry show --tree` to show the whole dependency tree.
 
+### Versions
+
+The '^' sign for a version (in [pyproject.toml](./pyproject.toml)), allows updates for minor versions, but nor for major versions. This is the default behaviour, when simply adding a package with `poetry add requests`.
+To control the version that is installed you can use:
+
+- `poetry add requests@2.12.1` to install a specific version
+- `poetry add requests^2.12.1` to install the most recent minor-version following the `2.12.1` version, but it won't install `3.x.x`. This is the default behavior.
+- `poetry add requests~2.12.1` to install the most recent patch-version following the `2.12.1` version, but it won't install `2.13.x`.
+
 ## uv
 
 let's you also manage dependencies like poetry but is faster. Read the [docs](https://docs.astral.sh/uv/).
@@ -96,20 +105,15 @@ Useful commands for a single script:
   - `uv add --script script.py "numpy"` adds the dependency to the script (in the comments that where been added on top of the script)
 - **with python projects**
   - `uv init` init git repo, creates a bunch of files
-  - `uv add numpy` adds the dependency to the project (creates also a .venv folder in the project for the first extra dependency added)
+  - `uv init --lib numbers` inits the folder structure for a library called numbers
+  - **uv add**
+    - `uv add numpy` adds the dependency to the project (creates also a .venv folder in the project for the first extra dependency added)
+    - `uv add numpy --editable path/to/library` adds the dependency in editable mode
+    - to add packages from a private source follow this [documentation](https://docs.astral.sh/uv/guides/integration/alternative-indexes/). In a nutshell: you need to add manually the uv index, set the environmental variables (that depend on the index name) and can then install the package with `uv add <package> --index <index-name>`.
   - `uv remove numpy` removes the dependency from the project
   - `uv run main.py` equivalent to the script part
   - `uv sync` syncs the dependencies with the virtual environment - this automatically runs before `uv run` command
   - `uv lock` creates lock files
-
-### Versions
-
-The '^' sign for a version (in [pyproject.toml](./pyproject.toml)), allows updates for minor versions, but nor for major versions. This is the default behaviour, when simply adding a package with `poetry add requests`.
-To control the version that is installed you can use:
-
-- `poetry add requests@2.12.1` to install a specific version
-- `poetry add requests^2.12.1` to install the most recent minor-version following the `2.12.1` version, but it won't install `3.x.x`. This is the default behavior.
-- `poetry add requests~2.12.1` to install the most recent patch-version following the `2.12.1` version, but it won't install `2.13.x`.
 
 ## Git pre-commits
 
