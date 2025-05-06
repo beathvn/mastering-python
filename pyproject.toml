@@ -4,8 +4,26 @@ version = "0.1.0"
 description = "A project to demonstrate some of the best practices in python"
 readme = "README.md"
 requires-python = ">=3.11"
-dependencies = [
-    "ipykernel>=6.29.5",
-    "numpy>=2.2.5",
-    "pre-commit>=4.2.0",
+dependencies = ["ipykernel>=6.29.5", "numpy>=2.2.5", "pre-commit>=4.2.0"]
+
+[dependency-groups]
+dev = ["ruff>=0.11.8"]
+
+# checkout: https://docs.astral.sh/ruff/configuration/
+[tool.ruff]
+exclude = [
+    ".git", 
+    "__pycache__", 
+    ".venv",
 ]
+select = [
+    "I", # isort
+]
+line-length = 88
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"                 # like in black
+docstring-code-format = true
+docstring-code-line-length = "dynamic"
+line-ending = "auto"                   # can be also number
