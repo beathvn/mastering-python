@@ -37,7 +37,6 @@
                 // },
                 "python.defaultInterpreterPath": "./.venv/bin/python",
                 "python.linting.enabled": true,
-                "python.linting.pylintEnabled": true,
                 "[python]": {
                     "editor.defaultFormatter": "charliermarsh.ruff",
                     "editor.formatOnSave": true
