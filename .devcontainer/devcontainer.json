@@ -75,6 +75,7 @@
                 "gruntfuggly.todo-tree",
                 "davidanson.vscode-markdownlint",
                 "yzhang.markdown-all-in-one"
+                // "-extensionName" // to opt out of extensions, that possibly are added by a feature
             ]
         }
     },

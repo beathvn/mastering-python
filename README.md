@@ -104,12 +104,14 @@ Useful commands for a single script:
   - `uv init --script script.py --python 3.11` adds a comment to the script, that shows which python version are needed to run the script
   - `uv add --script script.py "numpy"` adds the dependency to the script (in the comments that where been added on top of the script)
 - **with python projects**
-  - `uv init` init git repo, creates a bunch of files
-  - `uv init --lib numbers` inits the folder structure for a library called numbers
+  - **uv init** (read the [docs](https://docs.astral.sh/uv/concepts/projects/init/))
+    - `uv init example-app` init git repo, creates a bunch of files. If you don't pass the name, it will use the current folder name.
+    - `uv init --lib numbers` inits the folder structure for a library called numbers
+    - `uv init --no-workspace` useful when you need to init a uv project inside another uv project. If you just do `uv init` it will create a workspace and add the current project to the workspace (no seperate .venv for inner project...)
   - **uv add**
     - `uv add numpy` adds the dependency to the project (creates also a .venv folder in the project for the first extra dependency added)
     - `uv add numpy --editable path/to/library` adds the dependency in editable mode
-    - to add packages from a private source follow this [documentation](https://docs.astral.sh/uv/guides/integration/alternative-indexes/). In a nutshell: you need to add manually the uv index, set the environmental variables (that depend on the index name) and can then install the package with `uv add <package> --index <index-name>`.
+    - to add packages from a private source follow this [documentation](https://docs.astral.sh/uv/guides/integration/alternative-indexes/). In a nutshell: you need to set the environmental variables (that depend on the index name: `UV_INDEX_PRIVATE_REGISTRY_USERNAME`, `UV_INDEX_PRIVATE_REGISTRY_PASSWORD` if index name is `private-registry`) and can then install the package with `uv add <package> --index <index-name>=<index-url>`. No need to edit the `.toml` file manually.
   - `uv remove numpy` removes the dependency from the project
   - `uv run main.py` equivalent to the script part
   - `uv sync` syncs the dependencies with the virtual environment - this automatically runs before `uv run` command
