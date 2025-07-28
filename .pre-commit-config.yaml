@@ -39,3 +39,7 @@ repos:
 #   rev: '3.2.356'
 #   hooks:
 #     - id: checkov
+- repo: https://github.com/gitleaks/gitleaks
+  rev: v8.24.2
+  hooks:
+    - id: gitleaks
