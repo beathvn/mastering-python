@@ -5,9 +5,8 @@ import logging
 import streamlit as st
 
 logging.basicConfig(
-    format="{asctime} - {levelname} - {message}",
+    format="{levelname} - {message}",
     style="{",
-    datefmt="%Y-%m-%d %H:%M:%S",
     level=logging.INFO,
 )
 
