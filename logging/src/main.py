@@ -5,13 +5,12 @@ import logging
 import streamlit as st
 
 logging.basicConfig(
-    format="{levelname} - {message}",
+    format="[{levelname}] {name}: {message}",
     style="{",
     level=logging.INFO,
 )
 
 logger = logging.getLogger(__name__)
-# logger.setLevel(logging.ERROR)
 
 if st.button("DEBUG Click me"):
     st.write("Button clicked!")
