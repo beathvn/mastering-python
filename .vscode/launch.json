@@ -13,7 +13,9 @@
                 "run",
                 "src/main.py",
                 "--server.headless",
-                "true"
+                "true",
+                "--server.port",
+                "5012",
             ],
             "cwd": "${workspaceFolder}/logging/",
             "consoleName": "logging"
