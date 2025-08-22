@@ -12,5 +12,5 @@ docker build -t logging:latest .
 ```
 
 ```shell
-docker run --network host logging:latest
+docker run --env-file ./env/.env.dev --network host logging:latest
 ```

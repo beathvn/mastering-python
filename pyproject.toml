@@ -4,18 +4,25 @@ version = "0.1.0"
 description = "A project to demonstrate some of the best practices in python"
 readme = "README.md"
 requires-python = ">=3.11"
-dependencies = ["ipykernel>=6.29.5", "numpy>=2.2.5", "pre-commit>=4.2.0"]
+dependencies = [
+    "azure-monitor-opentelemetry>=1.7.0",
+    "ipykernel>=6.29.5",
+    "numpy>=2.2.5",
+    "opentelemetry-api>=1.36.0",
+    "opentelemetry-sdk>=1.36.0",
+    "pre-commit>=4.2.0",
+    "streamlit>=1.48.1",
+]
 
 [dependency-groups]
-dev = ["ruff>=0.11.8"]
+dev = [
+    "python-dotenv>=1.1.1",
+    "ruff>=0.11.8",
+]
 
 # checkout: https://docs.astral.sh/ruff/configuration/
 [tool.ruff]
-exclude = [
-    ".git", 
-    "__pycache__", 
-    ".venv",
-]
+exclude = [".git", "__pycache__", ".venv"]
 select = [
     "I", # isort
 ]

@@ -1,16 +1,32 @@
-# sytem imports
-import logging
+# ruff: noqa: I001
 
-# 3rd party imports
-import streamlit as st
+# system imports
+import logging
+import os
 
 logging.basicConfig(
     format="[{levelname}] {name}: {message}",
     style="{",
-    level=logging.INFO,
 )
 
-logger = logging.getLogger(__name__)
+LOGGER_NAME = "loggingTest"
+from azure.monitor.opentelemetry import configure_azure_monitor
+
+# 3rd party imports
+import streamlit as st
+
+if st.session_state.get("first_run") is None:
+    configure_azure_monitor(
+        logger_name=LOGGER_NAME,
+        connection_string=os.environ["APPLICATIONINSIGHTS_CONNECTION_STRING"],
+        enable_live_metrics=True,
+        disable_offline_storage=True,
+        logging_formatter=logging.Formatter("[%(levelname)s] %(name)s: %(message)s"),
+    )
+    st.session_state["first_run"] = True
+
+logger = logging.getLogger(LOGGER_NAME)
+logger.setLevel(logging.INFO)
 
 if st.button("DEBUG Click me"):
     st.write("Button clicked!")
