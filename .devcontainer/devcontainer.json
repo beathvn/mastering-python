@@ -1,5 +1,6 @@
 { // https://github.com/devcontainers/images/tree/main/src/python/.devcontainer
     "name": "Python 3",
+    // "image": "mcr.microsoft.com/devcontainers/base:ubuntu-22.04", // if you don't want to build your own with Dockerfile - https://hub.docker.com/r/microsoft/devcontainers-base
     "build": {
         "dockerfile": "./Dockerfile",
         "context": ".",
