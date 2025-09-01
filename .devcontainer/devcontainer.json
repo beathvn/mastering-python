@@ -31,6 +31,9 @@
         // "ghcr.io/dhoeric/features/trivy:1": {},
         // "ghcr.io/dhoeric/features/terraform-docs:1": {}
     },
+    "containerEnv": {
+        "UV_LINK_MODE": "copy" // the project folder is mounted, but uv is installed in the container - so it cannot link the libraries, but needs to copy - this makes sure it does that by default and not show always a warning
+    },
     "customizations": {
         "vscode": {
             "settings": {

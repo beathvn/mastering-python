@@ -1,4 +1,4 @@
-# install uv
+# install uv - make sure to set also the the UV_LINK_MODE env variable in devcontainer.json
 curl -LsSf https://astral.sh/uv/install.sh | sh
 
 # optionally: install dependencies and pre-commit hooks
