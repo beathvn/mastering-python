@@ -1,29 +1,29 @@
 { // https://github.com/devcontainers/images/tree/main/src/python/.devcontainer
     "name": "Python 3",
-    // "image": "mcr.microsoft.com/devcontainers/base:ubuntu-22.04", // if you don't want to build your own with Dockerfile - https://hub.docker.com/r/microsoft/devcontainers-base
-    "build": {
-        "dockerfile": "./Dockerfile",
-        "context": ".",
-        "args": {
-            "VARIANT": "3.11-bullseye"
-        }
-    },
+    "image": "mcr.microsoft.com/devcontainers/python:3.11-bookworm", // if you don't want to build your own with Dockerfile - https://hub.docker.com/r/microsoft/devcontainers-base
+    // "build": { // if you really need full control... but the dev images are usually good enough
+    //     "dockerfile": "./Dockerfile",
+    //     "context": ".",
+    //     "args": {
+    //         "VARIANT": "3.11-bullseye"
+    //     }
+    // },
     "runArgs": [
         "--network=host"
         // "-v", "/var/run/docker.sock:/var/run/docker.sock" // to connect to the local docker daemon
     ],
     "features": {
-        "ghcr.io/devcontainers/features/common-utils:2": { // https://github.com/devcontainers/features/tree/main/src/common-utils
-            "installZsh": "true", // by default, zsh is installed, also oh-my-zsh
-            "username": "vscode",
-            // "userUid": "1000", // better not to hardcode these
-            // "userGid": "1000", 
-            "upgradePackages": "true"
-        },
-        "ghcr.io/devcontainers/features/git:1": { // https://github.com/devcontainers/features/tree/main/src/git
-            "version": "latest",
-            "ppa": "false"
-        },
+        // "ghcr.io/devcontainers/features/common-utils:2": { // https://github.com/devcontainers/features/tree/main/src/common-utils
+        //     "installZsh": "true", // by default, zsh is installed, also oh-my-zsh
+        //     "username": "vscode",
+        //     // "userUid": "1000", // better not to hardcode these
+        //     // "userGid": "1000", 
+        //     "upgradePackages": "true"
+        // },
+        // "ghcr.io/devcontainers/features/git:1": { // https://github.com/devcontainers/features/tree/main/src/git
+        //     "version": "latest",
+        //     "ppa": "false"
+        // },
         "ghcr.io/devcontainers/features/docker-outside-of-docker:1": {},
         // "ghcr.io/devcontainers/features/terraform:1": {} // this is needed for terraform
         "ghcr.io/devcontainers/features/azure-cli:1": {} // you also need azure cli for local terraform
